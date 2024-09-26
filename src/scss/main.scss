@@ -1,0 +1,585 @@
+body {
+  font-family: 'Ubuntu', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+
+}
+
+$primary-color: #9747FF;
+$secondary-color: #8425FF;
+$active-tab-color: #8425FF;
+$advantage-bg-color: #f8f9fa;
+$advantage-hover-bg-color: #8425FF;
+$icon-circle-bg-color: #E0CFFC;
+
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1001;
+  padding: 16px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 64px;
+}
+
+.navbar-nav {
+  .nav-link {
+    position: relative;
+    color: $primary-color;
+    padding: 10px 15px;
+    margin: 0 5px;
+    transition: color 0.3s, border-bottom 0.3s ease;
+
+    &:hover, &:focus {
+      color: $secondary-color;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: transparent;
+      transition: background-color 0.3s ease;
+    }
+
+    &.active {
+      color: $secondary-color;
+
+      &::after {
+        background-color: $active-tab-color;
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .fixed-header {
+    width: 100vw;
+    //left: 0;
+    //right: 0;
+  }
+
+  .navbar-nav {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .navbar-nav .nav-link {
+    text-align: center;
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.order-icon {
+  height: 44px;
+  width: 44px;
+  background-color: $primary-color;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+
+.btn-primary {
+  background-color: $primary-color;
+  border-color: $primary-color;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: $secondary-color;
+    border-color: $secondary-color;
+  }
+
+  svg {
+    margin-right: 5px;
+  }
+}
+
+.advantages {
+  padding: 50px 0;
+}
+
+.advantages__title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.catalog {
+  padding: 96px 0;
+}
+
+.catalog__title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.catalog__description {
+  color: #86929E;
+  font-size: 16px;
+  max-width: 600px;
+  text-align: center;
+}
+
+.card {
+  max-width: 100%;
+  margin: 0 auto;
+  display: inline-block;
+  width: auto;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  border: 2px solid lightgrey;
+}
+
+.card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  border: 2px $primary-color solid;
+  cursor: pointer;
+  transform: scale(1.1);
+
+  .card-link {
+    color: $primary-color;
+  }
+}
+
+.card-img-top {
+  width: 100%;
+  height: auto;
+}
+
+.card-body {
+  background-color: #f8f9fa;
+  padding: 15px;
+  overflow: hidden;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.card-text {
+  margin-bottom: 10px;
+}
+
+.card-link {
+  display: block;
+  text-align: left;
+  margin-top: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  color: #222222;
+}
+
+.badge {
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  border-radius: 100px;
+  z-index: 1000;
+}
+
+.badge-new {
+  background: linear-gradient(90deg, #09F685 0%, #10BC55 100%);
+  color: white;
+}
+
+.badge-not-new {
+  background: linear-gradient(90deg, #FF97C3 0%, #FF1C1C 100%);
+  color: white;
+}
+
+.swiper-container-card {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  position: relative;
+  margin: 0 auto;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-pagination {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  border-radius: 100%;
+  background: #000;
+  opacity: 0.2;
+  margin: 0 8px;
+  transition: opacity 0.3s ease, background 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #09F685;
+}
+
+.custom-modal {
+  &-dialog {
+    max-width: 856px;
+  }
+
+  &-body {
+    padding: 20px;
+  }
+
+  &-swiper-container {
+    width: 100%;
+    height: 400px;
+  }
+
+  &-thumbnail-swiper-container {
+    width: 100%;
+    height: 100px;
+
+  }
+
+  &-product-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  &-product-price {
+    font-size: 20px;
+    color: #09F685;
+    margin-bottom: 10px;
+  }
+
+  &-product-description {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  &-product-specs {
+    font-size: 14px;
+
+    th, td {
+      padding: 8px;
+      border: 1px solid #dee2e6;
+    }
+  }
+
+  &-content {
+    border-radius: 10px;
+  }
+
+  &-body {
+    position: relative;
+  }
+
+  &-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #000;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  position: absolute;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  margin-top: -15px;
+  z-index: 10;
+  cursor: pointer;
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &::after {
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+.advantage-card {
+  background-color: $advantage-bg-color;
+
+  transition: background-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 333px;
+
+  &:hover {
+    background-color: $advantage-hover-bg-color;
+    color: white;
+
+    .advantage-number, .advantage-title {
+      opacity: 0;
+    }
+
+    .advantage-description {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .advantage-number {
+    font-size: 56px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    transition: opacity 0.4s ease;
+  }
+
+  .advantage-title {
+    font-size: 24px;
+    font-weight: bold;
+    transition: opacity 0.4s ease;
+  }
+
+  .advantage-description {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    width: 80%;
+    text-align: center;
+  }
+
+  .advantage-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+
+    .icon-circle {
+      background-color: $icon-circle-bg-color;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+  }
+}
+
+.order-btn {
+  height: 100%;
+  max-height: 160px;
+}
+
+.order-btn-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.modal-content {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.modal-body {
+  padding: 0;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.form-control {
+  border-radius: 5px;
+}
+
+#orderSuccess {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.modal-open {
+  overflow: scroll;
+}
+
+.footer {
+  margin: 0 auto;
+  color: rgb(0, 0, 0, 0.76);
+  padding: 20px 0;
+  max-width: 1256px;
+  text-align: center;
+  border-top: 1px rgb(0, 0, 0, 0.05) solid;
+
+
+  &__text {
+    font-size: 14px;
+    margin: 0;
+  }
+}
+
+
+.swiper-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  height: 44px !important;
+  width: 44px !important;
+  background-color: white;
+  background-position: center;
+  background-size: 22px;
+  background-repeat: no-repeat;
+  padding: 4px 8px;
+  border-radius: 50%;
+}
+
+.swiper-button-prev {
+  background-image: url("../icons/chevron-left.svg");
+  right: 200px !important;
+}
+
+.swiper-button-next {
+  background-image: url("../icons/chevron-right.svg");
+  right: 200px;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
+}
+
+.swiper-pagination-bullet{
+  width: 40px;
+  height: 40px;
+  background-color: red;
+}
+
+.swiper-button-next {
+  right: 150px !important; /* Сдвиг вправо */
+}
+
+.swiper-button-prev {
+  left: 150px !important; /* Сдвиг влево */
+}
+
+.modal-open {
+  padding-right: 0 !important;
+}
+
+html {
+  overflow-y: scroll !important;
+}
+
+.flip-card {
+  perspective: 1000px;
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  &:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+
+  .flip-card-front {
+    background-color: $advantage-bg-color;
+    color: black;
+  }
+
+  .flip-card-back {
+    background-color: $advantage-hover-bg-color;
+    color: white;
+    transform: rotateY(180deg);
+  }
+}
